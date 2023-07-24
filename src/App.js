@@ -112,13 +112,13 @@ function RegionDropdown({dropdownLabel, onRegionSelect}) {
 
 function Price({ price, description, icon }) {
   return (
-    <div class="p-6 bg-white rounded-xl shadow-lg flex items-center justify-center space-x-4">
-      <div class="shrink-0">
-        <img class="h-14 w-14" src={icon} alt="Energy Symbol"></img>
+    <div class="p-6 bg-white rounded-xl shadow-lg flex items-center justify-initial">
+      <div class="basis-1/4">
+        <img class="h-14 w-14 mx-auto" src={icon} alt="Energy Symbol"></img>
       </div>
-      <div>
+      <div class="basis-3/4">
         <div class="text-xl font-medium text-black text-center">{description}</div>
-        <p class="text-slate-500 font-bold text-center">{price}</p>
+          <p class="text-slate-500 font-bold text-center">{price}</p>
       </div>
     </div>
   );
@@ -227,12 +227,12 @@ function App() {
           dropdownLabel={("selected-region" in cookies) ? cookies["selected-region"] + " - " + regions[cookies["selected-region"]]: "Energy Region"} 
           onRegionSelect={onRegionSelect}
         />
-        <Price price={todayElec} description={"Today's Electricity"} icon={bolt}/>
-        <Price price={todayGas} description={"Today's Gas"} icon={flame}/>
-        <Price price={tomorrowElec} description={"Tomorrow's Electricity"} icon={bolt}/>
-        <Price price={tomorrowGas} description={"Tomorrow's Gas"} icon={flame}/>
-        <Price price={baselineElec} description={"Standard Rate Elec"} icon={bolt}/>
-        <Price price={baselineGas} description={"Standard Rate Gas"} icon={flame}/>
+        <Price price={todayElec} description={"Today"} icon={bolt}/>
+        <Price price={todayGas} description={"Today"} icon={flame}/>
+        <Price price={tomorrowElec} description={"Tomorrow"} icon={bolt}/>
+        <Price price={tomorrowGas} description={"Tomorrow"} icon={flame}/>
+        <Price price={baselineElec} description={"Standard Rate"} icon={bolt}/>
+        <Price price={baselineGas} description={"Standard Rate"} icon={flame}/>
       </div>
     </div>
   );

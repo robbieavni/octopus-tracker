@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CookiesProvider } from "react-cookie";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-DE54PBR8N9");
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

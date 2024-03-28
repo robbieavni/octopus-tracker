@@ -21,30 +21,49 @@ export default function EnergyPrices({energyRegion}) {
   const currentDateRef = useRef(null);
 
   const parseStandardResults = (results, elec) => {
-    let newestStartDate = new Date(results[0].valid_from);
-    let price;
-
-    if (newestStartDate > currentDateRef.current) {
-      price = results[1].value_inc_vat.toFixed(2)+'p';
+    
+    function findDirectDebitEntry(results) {
+      const result = results.find(entry => {
+        if (entry.payment_method !== "DIRECT_DEBIT") {
+          return false;
+        }
+        const validFrom = new Date(entry.valid_from);
+        const validTo = entry.valid_to ? new Date(entry.valid_to) : new Date("9999-12-31T23:59:59Z"); // Assuming a far future date if valid_to is null
+        return currentDateRef.current >= validFrom && currentDateRef.current <= validTo;
+      });
+      return result;
     }
-    else {
-      price = results[0].value_inc_vat.toFixed(2)+'p';
-    }
+    let relevantEntry = findDirectDebitEntry(results)
+    let price = relevantEntry.value_inc_vat.toFixed(2)+'p';
 
     elec ? setBaselineElec(price) : setBaselineGas(price);
   }
 
   const parseTrackerResults = (results, elec) => {
-    let newestStartDate = new Date(results[0].valid_from);
-    let today = ""
-    let tomorrow = ""
+    function findEntriesForTodayAndTomorrow(results) {
+      const today = currentDateRef.current;
+      today.setHours(0, 0, 0, 0); // Normalize today's date to start of the day
+    
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1); // Get tomorrow's date
+    
+      const todayString = today.toISOString().split('T')[0];
+      const tomorrowString = tomorrow.toISOString().split('T')[0];
+    
+      const todayEntry = results.find(entry => entry.valid_from.startsWith(todayString));
+      const tomorrowEntry = results.find(entry => entry.valid_from.startsWith(tomorrowString));
+    
+      return { todayEntry, tomorrowEntry };
+    }
+    
+    const { todayEntry, tomorrowEntry } = findEntriesForTodayAndTomorrow(results);
 
-    if (newestStartDate > currentDateRef.current) {
-      today = results[1].value_inc_vat.toFixed(2)+'p';
-      tomorrow = results[0].value_inc_vat.toFixed(2)+'p';
+    let today = todayEntry.value_inc_vat.toFixed(2)+'p';
+    let tomorrow;
+    if (tomorrowEntry !== undefined) {
+      tomorrow = tomorrowEntry.value_inc_vat.toFixed(2)+'p';
     }
     else {
-      today = results[0].value_inc_vat.toFixed(2)+'p';
       tomorrow = "Price not yet available"
     }
 

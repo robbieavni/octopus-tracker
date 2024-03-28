@@ -25,19 +25,6 @@ export default function DescrptionAccordion() {
               </p>
             </Accordion.Content>
           </Accordion.Panel>
-          <Accordion.Panel>
-            <Accordion.Title>
-              What about standing charges?
-            </Accordion.Title>
-            <Accordion.Content>
-              <p className="mb-2 text-gray-500 dark:text-gray-400">
-                The standing charge does not vary each day on the Tracker tariff and is comparable to the Standard tariff.
-              </p>
-              <p className="mb-2 text-gray-500 dark:text-gray-400">
-                For example, the standing charges for region A on the Tracker tariff are 37.29p/day and 26.84p/day compared to 42.01p/day and 27.47p/day on the Standard tariff.
-              </p>
-            </Accordion.Content>
-          </Accordion.Panel>
         </Accordion>
       </div>
     )

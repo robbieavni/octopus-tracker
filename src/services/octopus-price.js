@@ -1,9 +1,9 @@
 const basePath = "https://api.octopus.energy/v1";
 
-const electricityTrackerPath = "/products/SILVER-FLEX-22-11-25/electricity-tariffs/E-1R-SILVER-FLEX-22-11-25-";
-const gasTrackerPath = "/products/SILVER-FLEX-22-11-25/gas-tariffs/G-1R-SILVER-FLEX-22-11-25-"
-const electricityStandardPath = "/products/VAR-BB-23-04-01/electricity-tariffs/E-1R-VAR-BB-23-04-01-";
-const gasStandardPath = "/products/VAR-BB-23-04-01/gas-tariffs/G-1R-VAR-BB-23-04-01-"
+const electricityTrackerPath = "/products/SILVER-23-12-06/electricity-tariffs/E-1R-SILVER-23-12-06-";
+const gasTrackerPath = "/products/SILVER-23-12-06/gas-tariffs/G-1R-SILVER-23-12-06-"
+const electricityStandardPath = "/products/VAR-22-11-01/electricity-tariffs/E-1R-VAR-22-11-01-";
+const gasStandardPath = "/products/VAR-22-11-01/gas-tariffs/G-1R-VAR-22-11-01-"
 
 const regionLookupPath = "/industry/grid-supply-points/?postcode="
 

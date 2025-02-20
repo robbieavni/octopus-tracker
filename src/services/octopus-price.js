@@ -1,7 +1,7 @@
 const basePath = "https://api.octopus.energy/v1";
 
-const electricityTrackerPath = "/products/SILVER-23-12-06/electricity-tariffs/E-1R-SILVER-23-12-06-";
-const gasTrackerPath = "/products/SILVER-23-12-06/gas-tariffs/G-1R-SILVER-23-12-06-"
+const electricityTrackerPath = "/productsSILVER-24-12-31/electricity-tariffs/E-1R-SILVER-24-12-31-";
+const gasTrackerPath = "/products/SILVER-24-12-31/gas-tariffs/G-1R-SILVER-24-12-31-"
 const electricityStandardPath = "/products/VAR-22-11-01/electricity-tariffs/E-1R-VAR-22-11-01-";
 const gasStandardPath = "/products/VAR-22-11-01/gas-tariffs/G-1R-VAR-22-11-01-"
 
